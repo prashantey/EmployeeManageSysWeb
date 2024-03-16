@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Management System</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="assest/styles/style.css">
+    <script src="assest/script/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+</head>
+
+<body>
+    <header>
+        <h1>Employee Management System</h1>
+    </header>
+    <div id="errorMsg"></div>
+
+    <div class="left">
+        <div class="bx bx-menu" id="menu-icon"></div>
+        <nav id="mainNav" class="navbar">
+            <a href="#home" class="active">Home</a>
+            <a href="#AddEmploee">Add Employee</a>
+            <!-- <a href="employees/allEmployees/showAllEmployees.php">Show All Employees</a> -->
+            <a href="/showAllEmployees">Show All Employees</a>
+            <a href="#PaySalary">Pay Salary</a>
+            <a href="#SearchEmployee">Search Employee</a>
+            <span class="active-nav"></span>
+        </nav>
+    </div>
+
+    <!-- Home Section design -->
+    <section class="home show-animate" id="home">
+        <div class="home-content">
+            <h2>Welcome to <span>Prashant Herooo</span></h2>
+        </div>
+        <p>
+            Welcome To Prashant Heroo ko Company, where innovation meets excellence in fostering a
+            dynamic and collaborative workplace. With a dedicated team of over 100 professionals,
+            we are proud to be a leading force in Hem Raj Company. At Hem Raj Co PVT LTD, our
+            commitment to excellence goes beyond delivering exceptional products/services; it
+            extends to cultivating a vibrant company culture that values each team member.
+            We believe in harnessing the diverse talents and expertise of our workforce to
+            drive success and achieve collective goals. Join us on this exciting journey as
+            we continue to inspire, innovate, and make a lasting impact in the landscape.
+        </p>
+    </section>
+    <div class="contact">
+        <h3>
+            Contact Us On
+        </h3>
+        <div class="home-sci">
+            <a href="https://www.facebook.com/pr4shanteyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy"><i
+                    class="bx bxl-facebook"></i></a>
+            <a href="https://twitter.com/pr4shantey"><i class="bx bxl-twitter"></i></a>
+            <a href="https://www.instagram.com/pr4shantey/"><i class="bx bxl-instagram"></i></a>
+        </div>
+    </div>
+    <div class="btn-box">
+        <h4>Searching For a Job?</h4>
+        <a href="https://www.instagram.com/pr4shantey/" class="btn">Apply</a>
+    </div>
+    <!-- Add Employee Design -->
+    <section class="addemp" id="AddEmploee">
+        <div class="addemp">
+            <h1 id="ademp">&nbsp;&nbsp;&nbsp;&nbsp;Add Employee</h1>
+        </div>
+        <form id="contactForm" onsubmit="submitForm(event)">
+            <div class="input-box">
+                <div class="column">
+                    <div class="input-field">
+                        <input type="text" name="id" id="id" placeholder="Enter Employee ID">
+                        <span class="focus"></span>
+                    </div>
+                    <div class="input-field">
+                        <input type="text" name="name" id="name" placeholder="Enter Employee Name">
+                        <span class="focus"></span>
+                    </div>
+                    <div class="input-field">
+                        <input type="text" name="number" id="number" placeholder="Enter Employee Number">
+                        <span class="focus"></span>
+                    </div>
+                </div>
+
+                <div class="column">
+                    <div class="input-field">
+                        <input type="text" name="age" id="age" placeholder="Enter Employee Age">
+                        <span class="focus"></span>
+                    </div>
+                    <div class="input-field">
+                        <input type="text" id='address' name="address" placeholder="Enter Employee Address">
+                        <span class="focus"></span>
+                    </div>
+                    <div class="input-field">
+                        <input type="text" id='salaryamt' name="salaryamt" placeholder="Enter Employee Salary Amt">
+                        <span class="focus"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="btnn">
+                <button type="submit" class="btnn" onclick="return addEmployeeVal()">Submit</button>
+            </div>
+        </form>
+    </section>
+    <!-- Show all Employee -->
+    <!-- <section id="#ShowAllEmployee" class="#ShowAllEmployee">
+
+</section> -->
+    <!-- Pay Salary Design -->
+    <section id="PaySalary" class="search-employee">
+
+        <div class="addemp">
+            <h1 id="ademp">&nbsp;&nbsp;&nbsp;&nbsp;Pay Salary</h1>
+        </div>
+        <form  id="process_salary" method="post" onsubmit="submitPayForm(event)">
+            <div class="input-box">
+                <div class="column">
+                    <div class="input-field">
+                        <input type="text" name="id" id="iid" placeholder="Enter Employee ID">
+                        <span class="focus"></span>
+                    </div>
+                    <div class="input-field">
+                        <input type="text" name="name" id="namee" placeholder="Enter Employee Name">
+                        <span class="focus"></span>
+                    </div>
+
+                </div>
+
+                <div class="column">
+                    <div class="input-field">
+                        <div class="input-field">
+                            <input type="text" name="number" id="numberr" placeholder="Enter Employee Number">
+                            <span class="focus"></span>
+                        </div>
+                    </div>
+                    <div class="input-field">
+                        <input type="text" id='amount_to_pay' name="amount_to_pay" placeholder="Enter Salary to Be Paid">
+                        <span class="focus"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="btnn">
+                <button type="submit" class="btnn" onclick="return paySalary()">Pay Now</button>
+            </div>
+        </form>
+    </section>
+    <!-- Search Employee Section -->
+    <section id="SearchEmployee" class="search-employee">
+        <h1 id="ademp">Search Employee</h1>
+        <form id="searchForm" action="/searchEmployee" method="GET" onsubmit="searchEmp(event)">
+            <div class="input-box">
+                <div class="column">
+                    <div class="input-field">
+                        <input type="text" name="id" id="idd" placeholder=" Enter Employee ID Or Number">
+                        <span class="focus"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="bttn">
+                <button type="submit" class="bttn" onclick="return searchEmployee()">Search</button>
+            </div>
+        </form>
+    </section>
+
+    <!-- Footer design -->
+    <div class="lst-foo">
+        <p> Prashant Bahadur Sapkota
+            Damak-5, Jhapa<br>
+            Phone Number : +977 9840820529 (Personal)<br>
+            Email: prashantsapkota444@gmail.com
+        </p>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-text">
+            <p>Copyright &copy; 2024 by Prashant | All Rights Reserved |<br>
+                Design By Prashant Sapkota
+            </p>
+        </div>
+    </footer>
+</body>
+
+</html>
